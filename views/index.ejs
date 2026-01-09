@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fórum de Perguntas e Respostas</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <h1>Bem-vindo ao Fórum de Perguntas e Respostas</h1>
@@ -15,11 +16,18 @@
     <p>Idade: <%= idade %></p>
     <p>Empresa: <%= empresa %></p>
 
+    <img src="/img/image.png">
+
     <% if (msg){ %>
-            <h3> Isso é uma mensagem de erro !</h3>
+            <h3 style="color: brown;"> Isso é uma mensagem de erro !</h3>
     <%} else { %>
-            <h3> Tudo OK !</h3>
+            <h3 style="color: rgb(17, 95, 17);"> Tudo OK !</h3>
     <% } %>    
+
+    <% produtos.forEach( (produto) => { %>
+        <p><strong>Produto:</strong> <%= produto.nome %>, <strong>Preço:</strong> R$ <%= produto.preco %>,00</p>
+        <hr>
+    <% }) %>
 
 </body>
 </html>
