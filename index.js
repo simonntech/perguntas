@@ -5,13 +5,18 @@ const port = 8080;
 // Configuração do EJS
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    const nome = "Simon";
-    const idade = 35;
+app.get('/:nome/:idade/:empresa', (req, res) => {
+    const nome = req.params.nome;
+    const idade = req.params.idade;
+    const empresa = req.params.empresa;
+
+    const exibirMsg = true;
+
     res.render("index", {
         nome: nome,
         idade: idade,
-        empresa: "Simon Tech",
+        empresa: empresa,
+        msg: exibirMsg
     });
 });
 
