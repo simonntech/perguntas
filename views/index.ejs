@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum de Perguntas e Respostas</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Fórum de Perguntas e Respostas</h1>
+    <form action="/perguntar" method="POST">
+        <label for="titulo">Título da Pergunta:</label><br>
+        <input type="text" id="titulo" name="titulo" required><br><br>
+        <label for="descricao">Descrição da Pergunta:</label><br>
+        <textarea id="descricao" name="descricao" rows="4" cols="50" required></textarea><br><br>
+        <input type="submit" value="Enviar Pergunta">
+    </form>
+    
+</body>
+</html>
