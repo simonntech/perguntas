@@ -6,7 +6,13 @@ const port = 8080;
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render("index");
+    const nome = "Simon";
+    const idade = 35;
+    res.render("index", {
+        nome: nome,
+        idade: idade,
+        empresa: "Simon Tech",
+    });
 });
 
 app.listen(port, () => {
