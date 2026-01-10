@@ -2,6 +2,17 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 8080;
+const connection = require("./database/database");
+
+// Teste de conexão com o banco de dados
+connection
+  .authenticate()
+  .then(() => {
+    console.log("Conexão com o banco de dados estabelecida com sucesso.");
+  })
+  .catch((error) => {
+    console.error("Erro ao conectar ao banco de dados:", error);
+  });
 
 // Configuração do EJS
 app.set("view engine", "ejs");
