@@ -14,7 +14,7 @@
           }); %>
           <small>Pergunta feita em: <%= dataFormatada %></small>
           <h4><%= pergunta.titulo %></h4>
-          <button class="btn btn-dark">Responder</button>
+          <a href="/pergunta/<%= pergunta.id %>" class="btn btn-dark">Responder</a>
           <hr />
         </div>
         <% }); %>

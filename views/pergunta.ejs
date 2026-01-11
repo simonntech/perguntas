@@ -1,0 +1,17 @@
+<%- include("partials/header") %> <%- include("partials/navbar") %>
+
+<body>
+  <div class="container">
+    <div class="card my-5 rounded rounded-lg shadow">
+      <h3 class="card-title text-center p-4 bg-dark text-light">
+        <%= pergunta.titulo %>
+      </h3>
+      <div class="card-body">
+        <p><%= pergunta.descricao %></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<%- include("partials/footer") %>

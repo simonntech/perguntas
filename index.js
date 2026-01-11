@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const port = 8080;
 const connection = require("./database/database");
 const Pergunta = require("./database/Pergunta");
+const { where } = require("sequelize");
 
 // Teste de conexão com o banco de dados
 connection
@@ -25,9 +26,7 @@ app.use(bodyParser.json());
 
 // Rotas
 app.get("/", (req, res) => {
-  Pergunta.findAll({ raw: true , order: [
-    ['id', 'DESC']
-  ]}).then((perguntas) => {
+  Pergunta.findAll({ raw: true, order: [["id", "DESC"]] }).then((perguntas) => {
     res.render("index", {
       perguntas: perguntas,
     });
@@ -50,6 +49,21 @@ app.post("/salvarpergunta", (req, res) => {
     // Redirecionar para a página inicial após salvar
     res.redirect("/");
   });
+});
+
+app.get("/pergunta/:id", (req, res) => {
+  const id = req.params.id;
+  Pergunta.findOne({
+    where: { id: id },
+  }).then(pergunta => {
+    if (pergunta != undefined) {
+      res.render("pergunta", {
+        pergunta: pergunta
+      });
+    } else { //Não encontrada
+      res.redirect("/");
+    }
+  })
 });
 
 // Iniciar o servidor

@@ -1,5 +1,4 @@
-<%- include("partials/header") %>
-<%- include("partials/navbar") %>
+<%- include("partials/header") %> <%- include("partials/navbar") %>
 
 <body>
   <div class="container mt-5">
@@ -13,12 +12,14 @@
           <input
             type="text"
             placeholder="Título da pergunta"
+            required
             class="form-control"
             name="titulo"
           />
           <label>Descrição:</label>
           <textarea
             placeholder="Faça uma pergunta"
+            required
             class="form-control"
             style="resize: none"
             name="descricao"
