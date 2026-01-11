@@ -25,7 +25,11 @@ app.use(bodyParser.json());
 
 // Rotas
 app.get("/", (req, res) => {
-  res.render("index");
+  Pergunta.findAll({ raw: true }).then((perguntas) => {
+    res.render("index", {
+      perguntas: perguntas,
+    });
+  });
 });
 
 app.get("/perguntar", (req, res) => {
@@ -39,13 +43,12 @@ app.post("/salvarpergunta", (req, res) => {
   // Salvando a pergunta no banco de dados
   Pergunta.create({
     titulo: titulo,
-    descricao: descricao
+    descricao: descricao,
   }).then(() => {
     // Redirecionar para a página inicial após salvar
     res.redirect("/");
-  })
+  });
 });
-
 
 // Iniciar o servidor
 app.listen(port, () => {
