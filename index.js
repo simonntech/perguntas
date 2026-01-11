@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const port = 8080;
 const connection = require("./database/database");
 const Pergunta = require("./database/Pergunta");
-const { where } = require("sequelize");
+const Resposta = require("./database/Resposta");
 
 // Teste de conexão com o banco de dados
 connection
