@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = 8080;
 const connection = require("./database/database");
+const perguntaModel = require("./database/pergunta");
 
 // Teste de conexão com o banco de dados
 connection
