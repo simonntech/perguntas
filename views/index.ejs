@@ -1,7 +1,7 @@
 <%- include("partials/header") %> <%- include("partials/navbar") %>
 <body>
   <div class="container">
-    <div class="card mt-5 rounded rounded-lg shadow">
+    <div class="card my-5 rounded rounded-lg shadow">
       <h3 class="card-title text-center p-4 bg-dark text-light">
         Todas perguntas
       </h3>
@@ -10,6 +10,8 @@
         <div class="mb-4">
           <h5><%= pergunta.titulo %></h5>
           <p><%= pergunta.descricao %></p>
+          
+            <button class="btn btn-dark">Responder</button>
           <hr />
         </div>
         <% }); %>
