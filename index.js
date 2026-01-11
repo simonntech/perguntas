@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = 8080;
 const connection = require("./database/database");
-const perguntaModel = require("./database/pergunta");
+const Pergunta = require("./database/Pergunta");
 
 // Teste de conexão com o banco de dados
 connection
@@ -36,9 +36,18 @@ app.post("/salvarpergunta", (req, res) => {
   // Lógica para salvar a pergunta no banco de dados
   const titulo = req.body.titulo;
   const descricao = req.body.descricao;
-  res.send("Pergunta salva com sucesso!");
+  // Salvando a pergunta no banco de dados
+  Pergunta.create({
+    titulo: titulo,
+    descricao: descricao
+  }).then(() => {
+    // Redirecionar para a página inicial após salvar
+    res.redirect("/");
+  })
 });
 
+
+// Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
