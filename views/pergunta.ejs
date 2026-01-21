@@ -9,8 +9,9 @@
       <div class="card-body">
         <h4><%= pergunta.titulo %></h4>
         <p><%= pergunta.descricao %></p>
-        <form action="">
+        <form method="post" action="/responder">
           <textarea placeholder="Digite sua resposta" class="form-control my-3" name="corpo" ></textarea>
+          <input type="hidden" name="perguntaId" value="<%= pergunta.id %>">
           <button type="submit" class="btn btn-dark">Responder</button>
         </form>
       </div>

@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Rotas
+// Rota para a página inicial
 app.get("/", (req, res) => {
   Pergunta.findAll({ raw: true, order: [["id", "DESC"]] }).then((perguntas) => {
     res.render("index", {
@@ -37,6 +38,7 @@ app.get("/perguntar", (req, res) => {
   res.render("perguntar");
 });
 
+// Rota para salvar uma pergunta
 app.post("/salvarpergunta", (req, res) => {
   // Lógica para salvar a pergunta no banco de dados
   const titulo = req.body.titulo;
@@ -51,19 +53,33 @@ app.post("/salvarpergunta", (req, res) => {
   });
 });
 
+// Rota para exibir uma pergunta específica
 app.get("/pergunta/:id", (req, res) => {
   const id = req.params.id;
   Pergunta.findOne({
     where: { id: id },
-  }).then(pergunta => {
+  }).then((pergunta) => {
     if (pergunta != undefined) {
       res.render("pergunta", {
-        pergunta: pergunta
+        pergunta: pergunta,
       });
-    } else { //Não encontrada
+    } else {
+      //Não encontrada
       res.redirect("/");
     }
-  })
+  });
+});
+
+// Rota para salvar uma resposta
+app.post("/responder", (req, res) => {
+  var corpo = req.body.corpo;
+  var perguntaId = req.body.perguntaId;
+  Resposta.create({
+    corpo: corpo,
+    perguntaId: perguntaId,
+  }).then(() => {
+    res.redirect("/pergunta/" + perguntaId);
+  });
 });
 
 // Iniciar o servidor
