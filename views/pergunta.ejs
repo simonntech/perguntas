@@ -15,6 +15,12 @@
           <button type="submit" class="btn btn-dark">Responder</button>
         </form>
       </div>
+      <div class="card-body">
+        <h4>Respostas:</h4>
+        <% respostas.forEach(resposta => { %>
+          <p class="card my-3 rounded p-2"><%= resposta.corpo %></p>
+        <% }); %>
+      </div>
     </div>
   </div>
 </body>
