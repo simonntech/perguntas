@@ -6,10 +6,10 @@ const Resposta = connection.define("respostas", {
     type: Sequelize.TEXT,
     allowNull: false,
   },
-    perguntaId: {
+  perguntaId: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    }
+  },
 });
 
 Resposta.sync({ force: false });
